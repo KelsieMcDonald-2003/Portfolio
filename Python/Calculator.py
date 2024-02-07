@@ -1,29 +1,36 @@
 def main():
     phrase = input("Would you like to use a calculator? (Yes/No): ")
-    if(phrase.upper() == "YES" or phrase.upper() == "Y"):
+    
+    if phrase.upper() == "YES" or phrase.upper() == "Y":
         calculator = input("What type of calculator are you in need of? Addition, Subtraction, Multiplication, Division, Floor Division, Modulus, Exponential: ")
-        if(calculator.upper() == "ADDITION"):
+        
+        if calculator.upper() == "ADDITION":
             addition()
-        elif(calculator.upper() == "SUBTRACTION"):
+        elif calculator.upper() == "SUBTRACTION":
             subtraction()
-        elif(calculator.upper() == "MULTIPLICATION"):
+        elif calculator.upper() == "MULTIPLICATION":
             multiplication()
-        elif(calculator.upper() == "DIVISION"):
+        elif calculator.upper() == "DIVISION":
             division()
-        elif(calculator.upper() == "FLOOR DIVISION"):
+        elif calculator.upper() == "FLOOR DIVISION":
             floordivision()
-        elif(calculator.upper() == "MODULUS"):
+        elif calculator.upper() == "MODULUS":
             modulus()
-        elif(calculator.upper() == "EXPONENTIAL"):
+        elif calculator.upper() == "EXPONENTIAL":
             exponential()
         else:
             print("Invalid input. Please try again")
             main()
-    elif(calculator.upper() == "NO" or calculator.upper() == "N"):
+            
+    elif phrase.upper() == "NO" or phrase.upper() == "N":
         print("Have a nice day!", end="")
+        
     else:
         print("Invalid input. Please try again.")
         main()
+
+# Assuming that the addition(), subtraction(), multiplication(), etc., functions are defined elsewhere in your code.
+
     
 def addition():
     phrase = int(input("Enter how many numbers you need to add together: "))
