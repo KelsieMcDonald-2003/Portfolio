@@ -1,0 +1,47 @@
+﻿@model BookModel
+@{
+    string title = ViewBag.Action + " Books";
+    ViewData["Title"] = title;
+}
+
+<h2>@title</h2>
+
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label">Title</label>
+        <input asp-for="Title" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Author" class="form-label">Author</label>
+        <input asp-for="Author" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PubYear" class="form-label">Published Year</label>
+        <input asp-for="PubYear" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Rating" class="form-label">Rating</label>
+        <input asp-for="Rating" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="GenreId" class="form-label">Genre</label>
+        <select asp-for="GenreId" class="form-select">
+            <option value="">Select a Genre</option>
+            @foreach (GenreModel g in ViewBag.Genres)
+            {
+                <option value="@g.GenreId">@g.GenreName</option>
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Description">Description</label>
+        <input asp-for="Description" class="form-control" />
+    </div>
+</form>

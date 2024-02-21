@@ -1,0 +1,45 @@
+﻿@model PatternModel
+@{
+    string title = ViewBag.Action + " Pattern";
+    ViewData["Title"] = title;
+}
+
+<h2>@title</h2>
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label">Title:</label>
+        <input asp-for="Title" class="form-label" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Publisher" class="form-label">Publlisher:</label>
+        <input asp-for="Publisher" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="HookId" class="form-label">Hook</label>
+        <select asp-for="HookId" class="form-select">
+            <option value="">Select a Hook</option>
+            @foreach (HookModel h in ViewBag.Hooks)
+            {
+                <option value="@h.HookId">@h.HookName</option>
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Description">Description</label>
+        <input asp-for="Description" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Pattern">Pattern:</label>
+        <input asp-for="Pattern" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+
+    </div>
+</form>
