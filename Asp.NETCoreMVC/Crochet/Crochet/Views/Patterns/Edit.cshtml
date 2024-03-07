@@ -1,6 +1,6 @@
-﻿@model PatternModel
+﻿@model PatternsModel
 @{
-    string title = ViewBag.Action + " Pattern";
+    string title = ViewBag.Action + " Patterns";
     ViewData["Title"] = title;
 }
 
@@ -9,37 +9,56 @@
     <div asp-validation-summary="All" class="text-danger"></div>
 
     <div class="mb-3">
-        <label asp-for="Title" class="form-label">Title:</label>
-        <input asp-for="Title" class="form-label" />
+        <label asp-for="PatternTitle" class="form-label">Pattern Title:</label>
+        <input asp-for="PatternTitle" class="form-control" />
     </div>
 
     <div class="mb-3">
-        <label asp-for="Publisher" class="form-label">Publlisher:</label>
-        <input asp-for="Publisher" class="form-control" />
-    </div>
-
-    <div class="mb-3">
-        <label asp-for="HookId" class="form-label">Hook</label>
+        <label asp-for="HookId" class="form-label">Hook Used:</label>
         <select asp-for="HookId" class="form-select">
-            <option value="">Select a Hook</option>
-            @foreach (HookModel h in ViewBag.Hooks)
+            @if (ViewBag.Hooks != null)
             {
-                <option value="@h.HookId">@h.HookName</option>
+                foreach (HooksModel h in ViewBag.Hooks)
+                {
+                    <option value="@h.HookId">@h.HookName</option>
+                }
             }
         </select>
     </div>
 
     <div class="mb-3">
-        <label asp-for="Description">Description</label>
-        <input asp-for="Description" class="form-control" />
+        <label asp-for="LevelId" class="form-label">Level:</label>
+        <select asp-for="LevelId" class="form-select">
+            @if (ViewBag.Levels != null)
+            {
+                foreach (LevelsModel l in ViewBag.Levels)
+                {
+                    <option value="@l.LevelId">@l.Level</option>
+                }
+            }
+        </select>
     </div>
 
     <div class="mb-3">
-        <label asp-for="Pattern">Pattern:</label>
-        <input asp-for="Pattern" class="form-control" />
+        <label asp-for="YarnBrand" class="form-label">Yarn Brand Used:</label>
+        <input asp-for="YarnBrand" class="form-text" />
     </div>
 
     <div class="mb-3">
-
+        <label asp-for="YarnColor" class="form-label">Yarn Color:</label>
+        <input asp-for="YarnColor" class="form-text" />
     </div>
+
+    <div class="mb-3">
+        <label asp-for="PatternDescription" class="form-label">Description:</label>
+        <input asp-for="PatternDescription" class="form-text" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Pattern" class="form-label">Pattern:</label>
+        <input asp-for="Pattern" class="form-text" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-controller="Patterns" asp-action="Index" class="btn btn-primary">Cancel</a>
 </form>

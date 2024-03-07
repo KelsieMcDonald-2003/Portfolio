@@ -1,5 +1,44 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<PatternsModel>
 @{
+    ViewData["Title"] = "Patterns";
 }
+
+<div class="mb-2">
+    <a asp-controller="Patterns" asp-action="Add" class="btn btn-Primary">Add a Pattern</a>
+</div>
+
+<table class="table table-borderless">
+    <thead>
+        <tr>
+            <th>Pattern Title:</th>
+            <th>Published By:</th>
+            <th>Published On:</th>
+            <th>Difficulty Level:</th>
+            <th>Hook Used:</th>
+            <th>Yarn Brand Used:</th>
+            <th>Yarn Color Used:</th>
+            <th>Pattern Description:</th>
+            <th>Pattern:</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var pattern in Model)
+        {
+            <tr>
+                <td>@pattern.PatternTitle</td>
+                <td>@pattern.Publisher</td>
+                <td>@pattern.Date</td>
+                <td>@pattern.Level</td>
+                <td>@pattern.Hook</td>
+                <td>@pattern.YarnBrand</td>
+                <td>@pattern.YarnColor</td>
+                <td>@pattern.PatternDescription</td>
+                <td>@pattern.Pattern</td>
+                <td>
+                    <a href="/Patterns/Edit?patternId=@pattern.PatternId">Edit</a>
+                    <a href="/Patterns/Delete?patternId=@pattern.PatternId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crochet", "Crochet\Crochet.csproj", "{7349110B-21EE-4679-93D6-1BEFA229F057}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crochet", "Crochet\Crochet.csproj", "{F76FF4CD-069F-4F53-9B2C-E913F534396A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7349110B-21EE-4679-93D6-1BEFA229F057}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7349110B-21EE-4679-93D6-1BEFA229F057}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7349110B-21EE-4679-93D6-1BEFA229F057}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7349110B-21EE-4679-93D6-1BEFA229F057}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F76FF4CD-069F-4F53-9B2C-E913F534396A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F76FF4CD-069F-4F53-9B2C-E913F534396A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F76FF4CD-069F-4F53-9B2C-E913F534396A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F76FF4CD-069F-4F53-9B2C-E913F534396A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8A55FEA5-B009-4E7D-A09E-9BEADB76970D}
+		SolutionGuid = {4F1E0D53-1D7E-4F37-BFC0-376B3316A89C}
 	EndGlobalSection
 EndGlobal

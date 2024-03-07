@@ -9,7 +9,7 @@ namespace Crochet.Models
 
         [Required(ErrorMessage = "Please enter a username.")]
         [StringLength(255)]
-        public string UserName { get; set; }
+        public string Username { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Please enter a password.")]
         [DataType(DataType.Password)]
