@@ -1,0 +1,46 @@
+﻿@model StoryModel
+@{
+    string title = ViewBag.Action + " Story";
+    ViewData["Title"] = title;
+}
+
+<h2>@title</h2>
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="StoryTitle" class="form-label">Story Title:</label>
+        <input asp-for="StoryTitle" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="StoryPlace" class="form-label">Where the Story Takes Place:</label>
+        <input asp-for="StoryPlace" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="StoryDate" class="form-label">When the Story Takes Place:</label>
+        <input asp-for="StoryDate" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="GenreId" class="form-label">Story Genre:</label>
+        <select asp-for="GenreId" class="form-select">
+            @if(ViewBag.Genres != null)
+            {
+                foreach(GenreModel g in ViewBag.Genres)
+                {
+                    <option value="@g.GenreId">@g.GenreName</option>
+                }
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Story" class="form-label">Story:</label>
+        <input asp-for="Story" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add</button>
+    <a asp-controller="Stories" asp-action="Index" class="btn btn-primary">Cancel</a>
+</form>

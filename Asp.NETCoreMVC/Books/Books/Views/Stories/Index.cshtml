@@ -1,0 +1,60 @@
+﻿@model List<StoryModel>
+@{
+    ViewData["Title"] = "Stories";
+}
+
+<div class="mb-2">
+    <a asp-controller="Stories"  asp-action="Add" class="btn btn-primary">Add a Story</a>
+</div>
+
+<h1>Stories</h1>
+
+<p>
+    Members can list their own fiction or non-fiction stories here by title, where
+    the story takes place, when the story takes place, their story genre and more!
+</p>
+<!--
+    /*
+@if(Model != null)
+{
+    foreach (var story in Model)
+    {
+        <h2>@story.StoryTitle</h2>
+        <p>@story.StoryPlace</p>
+        <p>@story.StoryDate</p>
+        <p>@story.User</p>
+        <p>@story.Date</p>
+        <p>@story.Genre?.GenreName</p>
+        <p>@story.Story</p>
+        <p>
+            <a href="/Comments/AddComment?storyId=@story.StoryId">Add a Comment</a>
+            <a href="/Stories/Edit?storyId=@story.StoryId">Edit</a>
+            <a href="/Stories/Delete?storyId=@story.StoryId">Delete</a>
+        </p>
+    }
+}
+*/
+-->
+@if (Model != null)
+{
+    foreach (var story in Model)
+    {
+        <h2>@story.StoryTitle</h2>
+        <p>@story.StoryPlace</p>
+        <p>@story.StoryDate</p>
+        <p>@story.User</p>
+        <p>@story.Date</p>
+        <p>@story.Genre?.GenreName</p>
+        <p>@story.Story</p>
+        <h3>Comments</h3>
+        @foreach (var comment in story.Comments)
+        {
+            <p>@comment.Comment</p>
+        }
+        <p>
+            <a href="/Comments/AddComment?storyId=@story.StoryId">Add a Comment</a>
+            <a href="/Stories/Edit?storyId=@story.StoryId">Edit</a>
+            <a href="/Stories/Delete?storyId=@story.StoryId">Delete Story</a>
+        </p>
+    }
+}
