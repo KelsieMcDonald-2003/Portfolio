@@ -11,12 +11,19 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+    .AddJsonOptions(o =>
+    {
+        o.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+        o.JsonSerializerOptions.PropertyNamingPolicy = null;
+    });
 
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("BooksContext")));
 
 builder.Services.AddTransient<IStoriesRepository, StoriesRepository>();
 builder.Services.AddTransient<ICommentsRepository, CommentsRepository>();
 builder.Services.AddTransient<IBooksRepository, BooksRepository>();
+builder.Services.AddTransient<IPhotosRepository, PhotosRepository>();
 
 builder.Services.AddIdentity<AppUserModel, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()

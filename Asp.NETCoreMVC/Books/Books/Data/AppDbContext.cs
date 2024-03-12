@@ -16,6 +16,7 @@ namespace Books.Data
         public DbSet<StoryModel> Stories { get; set; }
         public DbSet<BookModel> Books { get; set; }
         public DbSet<CommentsModel> Comments { get; set; }
+        public DbSet<PhotoModel> Photos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -32,6 +33,7 @@ namespace Books.Data
                 );
 
             builder.Entity<IdentityUserLogin<string>>().HasKey(l => new { l.LoginProvider, l.ProviderKey });
+            builder.Entity<PhotoModel>().Property(p => p.Photo).HasColumnType("varbinary(max)");
             base.OnModelCreating(builder);
         }
     }
