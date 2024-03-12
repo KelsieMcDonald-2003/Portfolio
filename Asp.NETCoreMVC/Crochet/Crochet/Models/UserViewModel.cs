@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Crochet.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Crochet.Models
 {

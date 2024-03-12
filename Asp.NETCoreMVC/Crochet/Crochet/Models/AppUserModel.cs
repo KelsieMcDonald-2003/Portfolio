@@ -5,7 +5,8 @@ namespace Crochet.Models
 {
     public class AppUserModel : IdentityUser
     {
-        public string? Name { get; set; } = string.Empty;
+        public string? Name { get; set; }
+
 
         [NotMapped]
         public IList<string>? RoleNames { get; set; }
