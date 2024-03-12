@@ -38,46 +38,6 @@ namespace Books.Controllers
             return View(photo);
         }
 
-        /*
-        [HttpPost]
-        public async Task<IActionResult> Add(PhotoUploadModel model)
-        {
-            if(model.file.Length > 0)
-            {
-                using (var stream = new MemoryStream())
-                {
-                    await model.file.CopyToAsync(stream);
-                    model.Photo = stream.ToArray();
-                }
-
-                await
-            }
-        }
-        */
-
-        /*
-        [HttpPost]
-        public async Task<IActionResult> Add(PhotoUploadModel model)
-        {
-            if (model.file.Length > 0)
-            {
-                using (var stream = new MemoryStream())
-                {
-                    await model.file.CopyToAsync(stream);
-                    model.Photo = stream.ToArray();
-                }
-            }
-
-            await prepository.StorePhotosAsync(new PhotoModel
-            {
-                PhotoName = model.PhotoName,
-                PhotoDescription = model.PhotoDescription,
-                Photo = model.Photo
-            });
-
-            return RedirectToAction("Index", "Photos");
-        }
-        */
         [HttpPost]
         public async Task<IActionResult> Add(PhotoUploadModel model)
         {
