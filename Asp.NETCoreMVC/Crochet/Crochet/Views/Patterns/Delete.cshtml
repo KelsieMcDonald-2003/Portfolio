@@ -4,10 +4,11 @@
 }
 
 <h2>Confirm Deletion</h2>
-<h3>@Model.Publisher(Model.Date)</h3>
+<h3>@Model.PatternTitle</h3>
 
-<form asp-action="Delete" method="post">
+<form asp-action="Delete" method="Post">
     <input type="hidden" asp-for="PatternId" />
+
     <button type="submit" class="btn btn-primary">Delete</button>
     <a asp-controller="Patterns" asp-action="Index" class="btn btn-primary">Cancel</a>
 </form>
