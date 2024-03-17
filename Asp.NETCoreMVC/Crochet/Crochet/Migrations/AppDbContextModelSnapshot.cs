@@ -525,7 +525,7 @@ namespace Crochet.Migrations
                     b.HasOne("Crochet.Models.PatternModel", "Pattern")
                         .WithMany("Comments")
                         .HasForeignKey("PatternId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("Crochet.Models.AppUserModel", "User")

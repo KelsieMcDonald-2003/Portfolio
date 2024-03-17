@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Crochet.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240314190205_RecommendationModel")]
-    partial class RecommendationModel
+    [Migration("20240317013805_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -527,7 +527,7 @@ namespace Crochet.Migrations
                     b.HasOne("Crochet.Models.PatternModel", "Pattern")
                         .WithMany("Comments")
                         .HasForeignKey("PatternId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("Crochet.Models.AppUserModel", "User")

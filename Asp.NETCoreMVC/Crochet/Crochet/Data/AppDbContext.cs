@@ -22,7 +22,7 @@ namespace Crochet.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<HookModel>().HasData(
-                    new HookModel { HookId = "A", HookName = "B", HookSize = "2.25 mm"},
+                    new HookModel { HookId = "A", HookName = "B", HookSize = "2.25 mm" },
                     new HookModel { HookId = "B", HookName = "C", HookSize = "2.75 mm" },
                     new HookModel { HookId = "C", HookName = "D", HookSize = "3.25 mm" },
                     new HookModel { HookId = "D", HookName = "E", HookSize = "3.5 mm" },
@@ -40,16 +40,23 @@ namespace Crochet.Data
                 );
 
             builder.Entity<LevelModel>().HasData(
-                    new LevelModel { LevelId = "A", LevelName = "Apprentice"},
-                    new LevelModel { LevelId = "B", LevelName = "Beginner"},
-                    new LevelModel { LevelId = "C", LevelName = "Intermediate"},
-                    new LevelModel { LevelId = "D", LevelName = "Advanced"},
-                    new LevelModel { LevelId = "E", LevelName = "Expert"},
-                    new LevelModel { LevelId = "F", LevelName = "Mastery"}
+                    new LevelModel { LevelId = "A", LevelName = "Apprentice" },
+                    new LevelModel { LevelId = "B", LevelName = "Beginner" },
+                    new LevelModel { LevelId = "C", LevelName = "Intermediate" },
+                    new LevelModel { LevelId = "D", LevelName = "Advanced" },
+                    new LevelModel { LevelId = "E", LevelName = "Expert" },
+                    new LevelModel { LevelId = "F", LevelName = "Mastery" }
                 );
+
+            builder.Entity<CommentModel>()
+                .HasOne(p => p.Pattern)
+                .WithMany(b => b.Comments)
+                .HasForeignKey(p => p.PatternId)
+                .OnDelete(DeleteBehavior.NoAction);
 
             builder.Entity<IdentityUserLogin<string>>().HasKey(l => new { l.LoginProvider, l.ProviderKey });
             base.OnModelCreating(builder);
         }
     }
 }
+

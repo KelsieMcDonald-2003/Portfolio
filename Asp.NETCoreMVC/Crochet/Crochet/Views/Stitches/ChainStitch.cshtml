@@ -1,5 +1,58 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Home Page";
 }
+
+<div class="text-center">
+    <h1>Chain</h1>
+</div>
+    
+<ol>
+    <li>
+        Make a Slip Knot:
+        <ul>
+            <li>Create a loop with the yarn, insert your hook, and tighten</li>
+        </ul>
+    </li>
+
+    <li>
+        Yarn Over:
+        <ul>
+            <li>
+                Wrap the yarn around your hook
+            </li>
+        </ul>
+    </li>
+
+    <li>
+        Pull Through:
+        <ul>
+            <li>
+                Pull the yarn through the loop on the hook. You've made one chain stitch.
+            </li>
+        </ul>
+    </li>
+
+    <li>
+        Repeat:
+        <ul>
+            <li>
+                Continue this process to create a chain of your desired length.
+            </li>
+        </ul>
+    </li>
+</ol>
+
+<div class="text-center">
+    <p>
+        Remember, maintaining the correct tension for chain stitches can take some practice, but
+        it's an easy stitch to learn. If you are more of a l
+    </p>
+
+    <p>
+        <iframe width="320" height="240" src="https://www.youtube.com/embed/chSDit06z24" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" Fullscreen></iframe>
+    </p>
+
+    <p>
+        <a asp-controller="Stitches" asp-action="Index" class="btn btn-dark">Back</a>
+    </p>
+</div>
