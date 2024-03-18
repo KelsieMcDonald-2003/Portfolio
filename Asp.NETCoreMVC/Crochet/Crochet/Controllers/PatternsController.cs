@@ -25,7 +25,8 @@ namespace Crochet.Controllers
             userManager = u;
         }
 
-        
+
+        [Authorize]
         public IActionResult Index()
         {
             var patterns = prepository.GetPatterns();
