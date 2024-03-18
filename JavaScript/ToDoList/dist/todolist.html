@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>To Do List</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+
+    <header>
+        <div id="navbar"></div>
+    </header>
+
+    <div id="navbar-placeholder"></div>
+        <script>
+            $(function(){$("#navbar-placeholder").load("commoncode/navbar.html");});
+        </script>
+
+        <div>
+            <h1>My To Do List</h1>
+        <input id="taskInput" type="text" placeholder="Enter new task">
+        <button onclick="addTaskFromInput()">Add Task</button>
+        <ol id="taskList">
+            <li></li> <button onclick="removeTaskFromList()">Remove Task</button>
+        </ol>
+</html><script defer src="vendors-node_modules_webpack-dev-server_client_index_js_protocol_ws_3A_hostname_0_0_0_0_port_-9e3a91.js"></script><script defer src="main.js"></script><script defer src="navbar.js"></script><script defer src="todolist.js"></script>
