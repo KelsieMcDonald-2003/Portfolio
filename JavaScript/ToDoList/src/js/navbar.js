@@ -1,3 +1,5 @@
+import '../css/navbar.css'
+
 export function navbar() {
     fetch('./navbar.html')
         .then(response => response.text())

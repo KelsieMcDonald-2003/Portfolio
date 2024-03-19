@@ -1,3 +1,5 @@
+import '../css/todolist.css'
+
 let todoList = [];
 
 function addTask(task) {
@@ -5,7 +7,7 @@ function addTask(task) {
     saveTasks();
 }
 
-function addTaskFromInput() {
+window.addTaskFromInput = function() {
     const input = document.getElementById('taskInput');
     addTask({ name : input.value, done: false});
     input.value = '';
@@ -33,6 +35,13 @@ function loadTasks() {
     }
 }
 
+function toggleDone(index) {
+    todoList[index].done = !todoList[index].done;
+    saveTasks();
+    renderTasks();
+}
+
+
 function renderTasks() {
     const list = document.getElementById('taskList');
     list.innerHTML = '';
@@ -40,10 +49,26 @@ function renderTasks() {
         const task = todoList[i];
         const listItem = document.createElement('li');
         listItem.textContent = task.name;
-        listItem.onclick = function() { removeTaskFromList(i);};
+
+        // Create a delete button
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'x';
+        deleteButton.onclick = function(event) {
+            // Prevent the list item from being clicked
+            event.stopPropagation();
+            removeTaskFromList(i);
+        };
+
+        // Append the delete button to the list item
+        listItem.appendChild(deleteButton);
+
+        // Change the onclick event of the list item
+        listItem.onclick = function() { toggleDone(i); };
+
         list.appendChild(listItem);
     }
 }
+
 
 loadTasks();
 

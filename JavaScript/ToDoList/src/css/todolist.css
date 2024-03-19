@@ -1,0 +1,15 @@
+h1{
+   text-align:center; 
+}
+
+input{
+    position:relative;
+    left:215px;
+}
+
+#button1{
+    position:relative;
+    left:225px;
+    background-color:darkslategrey;
+    color:white;
+}
