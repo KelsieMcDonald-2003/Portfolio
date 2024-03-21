@@ -11,74 +11,57 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _css_todolist_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/todolist.css */ "./src/css/todolist.css");
 
-var todoList = [];
-function addTask(task) {
-  todoList.push(task);
-  saveTasks();
-}
+var inputBox = document.getElementById("taskInput");
+var listContainer = document.getElementById("taskList");
 window.addTaskFromInput = function () {
-  var input = document.getElementById('taskInput');
-  addTask({
-    name: input.value,
-    done: false
-  });
-  input.value = '';
-  renderTasks();
+  if (inputBox.value === '') {
+    return;
+  } else {
+    var row = document.createElement("tr");
+    var taskCell = document.createElement("td");
+    taskCell.innerHTML = inputBox.value;
+    row.appendChild(taskCell);
+    var deleteCell = document.createElement("td");
+    var deleteButton = document.createElement("button");
+    deleteButton.innerHTML = "Delete";
+    deleteButton.onclick = function () {
+      this.parentElement.parentElement.remove();
+      saveData();
+    };
+    deleteCell.appendChild(deleteButton);
+    row.appendChild(deleteCell);
+    listContainer.appendChild(row);
+    saveData();
+  }
+  inputBox.value = "";
 };
-function removeTask(index) {
-  todoList.splice(index, 1);
-  saveTasks();
-}
-function removeTaskFromList(index) {
-  removeTask(index);
-  renderTasks();
-}
-function saveTasks() {
-  localStorage.setItem('todoList', JSON.stringify(todoList));
-}
-function loadTasks() {
-  var storedTasks = localStorage.getItem('todoList');
-  if (storedTasks) {
-    todoList = JSON.parse(storedTasks);
+listContainer.addEventListener("click", function (e) {
+  if (e.target.tagName === 'TD') {
+    e.target.classList.toggle("checked");
+    saveData();
+  } else if (e.target.tagName === "SPAN") {
+    e.target.parentElement.remove();
+    saveData();
+  }
+}, false);
+function saveData() {
+  if (typeof Storage !== "undefined") {
+    localStorage.setItem("data", listContainer.innerHTML);
+  } else {
+    console.log('Sorry, your browser does not support Web Storage...');
   }
 }
-function toggleDone(index) {
-  todoList[index].done = !todoList[index].done;
-  saveTasks();
-  renderTasks();
-}
-function renderTasks() {
-  var list = document.getElementById('taskList');
-  list.innerHTML = '';
-  var _loop = function _loop(i) {
-    var task = todoList[i];
-    var listItem = document.createElement('li');
-    listItem.textContent = task.name;
-
-    // Create a delete button
-    var deleteButton = document.createElement('button');
-    deleteButton.textContent = 'x';
-    deleteButton.onclick = function (event) {
-      // Prevent the list item from being clicked
-      event.stopPropagation();
-      removeTaskFromList(i);
-    };
-
-    // Append the delete button to the list item
-    listItem.appendChild(deleteButton);
-
-    // Change the onclick event of the list item
-    listItem.onclick = function () {
-      toggleDone(i);
-    };
-    list.appendChild(listItem);
-  };
-  for (var i = 0; i < todoList.length; i++) {
-    _loop(i);
+function showTask() {
+  if (typeof Storage !== "undefined") {
+    var data = localStorage.getItem("data");
+    if (data) {
+      listContainer.innerHTML = data;
+    }
+  } else {
+    console.log('Sorry, your browser does not support Web Storage...');
   }
 }
-loadTasks();
-renderTasks();
+showTask();
 
 /***/ }),
 
@@ -105,17 +88,16 @@ ___CSS_LOADER_EXPORT___.push([module.id, `h1{
    text-align:center; 
 }
 
-input{
-    position:relative;
-    left:215px;
-}
-
 #button1{
-    position:relative;
-    left:225px;
+    /*position:relative;
+    left:225px; */
     background-color:darkslategrey;
     color:white;
-}`, "",{"version":3,"sources":["webpack://./src/css/todolist.css"],"names":[],"mappings":"AAAA;GACG,iBAAiB;AACpB;;AAEA;IACI,iBAAiB;IACjB,UAAU;AACd;;AAEA;IACI,iBAAiB;IACjB,UAAU;IACV,8BAA8B;IAC9B,WAAW;AACf","sourcesContent":["h1{\r\n   text-align:center; \r\n}\r\n\r\ninput{\r\n    position:relative;\r\n    left:215px;\r\n}\r\n\r\n#button1{\r\n    position:relative;\r\n    left:225px;\r\n    background-color:darkslategrey;\r\n    color:white;\r\n}"],"sourceRoot":""}]);
+}
+
+ol li{
+    list-style:none;
+}`, "",{"version":3,"sources":["webpack://./src/css/todolist.css"],"names":[],"mappings":"AAAA;GACG,iBAAiB;AACpB;;AAEA;IACI;iBACa;IACb,8BAA8B;IAC9B,WAAW;AACf;;AAEA;IACI,eAAe;AACnB","sourcesContent":["h1{\r\n   text-align:center; \r\n}\r\n\r\n#button1{\r\n    /*position:relative;\r\n    left:225px; */\r\n    background-color:darkslategrey;\r\n    color:white;\r\n}\r\n\r\nol li{\r\n    list-style:none;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -339,7 +321,7 @@ if (true) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("08cc6ec664bc2bcd8f34")
+/******/ 		__webpack_require__.h = () => ("54953369e44410190060")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
@@ -1383,9 +1365,9 @@ if (true) {
 /******/ 	// module cache are used so entry inlining is disabled
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	__webpack_require__.O(undefined, ["vendors-node_modules_css-loader_dist_runtime_api_js-node_modules_css-loader_dist_runtime_sour-22d83e"], () => (__webpack_require__("./node_modules/webpack-dev-server/client/index.js?protocol=ws%3A&hostname=0.0.0.0&port=8080&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=true")))
-/******/ 	__webpack_require__.O(undefined, ["vendors-node_modules_css-loader_dist_runtime_api_js-node_modules_css-loader_dist_runtime_sour-22d83e"], () => (__webpack_require__("./node_modules/webpack/hot/dev-server.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["vendors-node_modules_css-loader_dist_runtime_api_js-node_modules_css-loader_dist_runtime_sour-22d83e"], () => (__webpack_require__("./src/js/todolist.js")))
+/******/ 	__webpack_require__.O(undefined, ["vendors-node_modules_css-loader_dist_runtime_api_js-node_modules_css-loader_dist_runtime_sour-807ff0"], () => (__webpack_require__("./node_modules/webpack-dev-server/client/index.js?protocol=ws%3A&hostname=0.0.0.0&port=8082&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=true")))
+/******/ 	__webpack_require__.O(undefined, ["vendors-node_modules_css-loader_dist_runtime_api_js-node_modules_css-loader_dist_runtime_sour-807ff0"], () => (__webpack_require__("./node_modules/webpack/hot/dev-server.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["vendors-node_modules_css-loader_dist_runtime_api_js-node_modules_css-loader_dist_runtime_sour-807ff0"], () => (__webpack_require__("./src/js/todolist.js")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

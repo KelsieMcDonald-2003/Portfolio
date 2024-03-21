@@ -1,75 +1,63 @@
 import '../css/todolist.css'
 
-let todoList = [];
+const inputBox = document.getElementById("taskInput");
+const listContainer = document.getElementById("taskList");
 
-function addTask(task) {
-    todoList.push(task);
-    saveTasks();
-}
-
-window.addTaskFromInput = function() {
-    const input = document.getElementById('taskInput');
-    addTask({ name : input.value, done: false});
-    input.value = '';
-    renderTasks();
-}
-
-function removeTask(index) {
-    todoList.splice(index, 1);
-    saveTasks();
-}
-
-function removeTaskFromList(index) {
-    removeTask(index);
-    renderTasks();
-}
-
-function saveTasks() {
-    localStorage.setItem('todoList', JSON.stringify(todoList));
-}
-
-function loadTasks() {
-    const storedTasks = localStorage.getItem('todoList');
-    if(storedTasks) {
-        todoList = JSON.parse(storedTasks);
+window.addTaskFromInput = function(){
+    if(inputBox.value === ''){
+        return;
     }
-}
+    else{
+        let row = document.createElement("tr");
+        let taskCell = document.createElement("td");
+        taskCell.innerHTML = inputBox.value;
+        row.appendChild(taskCell);
 
-function toggleDone(index) {
-    todoList[index].done = !todoList[index].done;
-    saveTasks();
-    renderTasks();
-}
-
-
-function renderTasks() {
-    const list = document.getElementById('taskList');
-    list.innerHTML = '';
-    for(let i = 0; i < todoList.length; i++) {
-        const task = todoList[i];
-        const listItem = document.createElement('li');
-        listItem.textContent = task.name;
-
-        // Create a delete button
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'x';
-        deleteButton.onclick = function(event) {
-            // Prevent the list item from being clicked
-            event.stopPropagation();
-            removeTaskFromList(i);
+        let deleteCell = document.createElement("td");
+        let deleteButton = document.createElement("button");
+        deleteButton.innerHTML = "Delete";
+        deleteButton.onclick = function() {
+            this.parentElement.parentElement.remove();
+            saveData();
         };
+        deleteCell.appendChild(deleteButton);
+        row.appendChild(deleteCell);
 
-        // Append the delete button to the list item
-        listItem.appendChild(deleteButton);
-
-        // Change the onclick event of the list item
-        listItem.onclick = function() { toggleDone(i); };
-
-        list.appendChild(listItem);
+        listContainer.appendChild(row);
+        saveData();
     }
+    inputBox.value = "";
 }
 
 
-loadTasks();
+listContainer.addEventListener("click", function(e){
+    if(e.target.tagName === 'TD'){
+        e.target.classList.toggle("checked");
+        saveData()
+    }
+    else if(e.target.tagName === "SPAN"){
+        e.target.parentElement.remove();
+        saveData()
+    }
+}, false);
 
-renderTasks();
+function saveData(){
+    if (typeof(Storage) !== "undefined") {
+        localStorage.setItem("data", listContainer.innerHTML);
+    } else {
+        console.log('Sorry, your browser does not support Web Storage...');
+    }
+}
+
+function showTask(){
+    if (typeof(Storage) !== "undefined") {
+        let data = localStorage.getItem("data");
+        if (data) {
+            listContainer.innerHTML = data;
+        }
+    } else {
+        console.log('Sorry, your browser does not support Web Storage...');
+    }
+}
+
+showTask()

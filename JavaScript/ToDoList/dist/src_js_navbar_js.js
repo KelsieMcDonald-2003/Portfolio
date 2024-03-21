@@ -193,7 +193,7 @@ module.exports = function (item) {
 /*!****************************!*\
   !*** ./src/css/navbar.css ***!
   \****************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -235,58 +235,6 @@ options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyl
 
 var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_navbar_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
 
-
-if (true) {
-  if (!_node_modules_css_loader_dist_cjs_js_navbar_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals || module.hot.invalidate) {
-    var isEqualLocals = function isEqualLocals(a, b, isNamedExport) {
-  if (!a && b || a && !b) {
-    return false;
-  }
-  var p;
-  for (p in a) {
-    if (isNamedExport && p === "default") {
-      // eslint-disable-next-line no-continue
-      continue;
-    }
-    if (a[p] !== b[p]) {
-      return false;
-    }
-  }
-  for (p in b) {
-    if (isNamedExport && p === "default") {
-      // eslint-disable-next-line no-continue
-      continue;
-    }
-    if (!a[p]) {
-      return false;
-    }
-  }
-  return true;
-};
-    var isNamedExport = !_node_modules_css_loader_dist_cjs_js_navbar_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals;
-    var oldLocals = isNamedExport ? _node_modules_css_loader_dist_cjs_js_navbar_css__WEBPACK_IMPORTED_MODULE_6__ : _node_modules_css_loader_dist_cjs_js_navbar_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals;
-
-    module.hot.accept(
-      /*! !!../../node_modules/css-loader/dist/cjs.js!./navbar.css */ "./node_modules/css-loader/dist/cjs.js!./src/css/navbar.css",
-      __WEBPACK_OUTDATED_DEPENDENCIES__ => { /* harmony import */ _node_modules_css_loader_dist_cjs_js_navbar_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js!./navbar.css */ "./node_modules/css-loader/dist/cjs.js!./src/css/navbar.css");
-(function () {
-        if (!isEqualLocals(oldLocals, isNamedExport ? _node_modules_css_loader_dist_cjs_js_navbar_css__WEBPACK_IMPORTED_MODULE_6__ : _node_modules_css_loader_dist_cjs_js_navbar_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals, isNamedExport)) {
-                module.hot.invalidate();
-
-                return;
-              }
-
-              oldLocals = isNamedExport ? _node_modules_css_loader_dist_cjs_js_navbar_css__WEBPACK_IMPORTED_MODULE_6__ : _node_modules_css_loader_dist_cjs_js_navbar_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals;
-
-              update(_node_modules_css_loader_dist_cjs_js_navbar_css__WEBPACK_IMPORTED_MODULE_6__["default"]);
-      })(__WEBPACK_OUTDATED_DEPENDENCIES__); }
-    )
-  }
-
-  module.hot.dispose(function() {
-    update();
-  });
-}
 
 
 
