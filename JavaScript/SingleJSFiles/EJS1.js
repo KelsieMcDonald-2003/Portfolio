@@ -26,10 +26,9 @@ for(num; num < 101; num += 1){
 }
 
 //Chess Board:
-var size = 8;
 var board = "";
-for (var y = 0; y < size; y++) {
-  for (var x = 0; x < size; x++) {
+for (var y = 0; y < 8; y++) {
+  for (var x = 0; x < 8; x++) {
     if ((x + y) % 2 == 0) {
       board += " ";
     } else {
