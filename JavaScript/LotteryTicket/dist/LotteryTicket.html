@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Lottery Ticket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    
+    <header>
+        <div id="navbar"></div>
+    </header>
+
+    <div>
+        <div>
+            <h2>Enter Your Lucky Numbers:</h2>
+            <div>
+                <input type="number" id="input" placeholder="Add Your Numbers Here">
+                <button onclick="getNumbers()">Add Number</button>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Your Lottery Ticket:</th>
+                        <th>Winning Lottery Ticket:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="userTicket"></td>
+                        <td id="winningTicket"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</html>
+<script defer src="main.js"></script><script defer src="lottery.js"></script>
